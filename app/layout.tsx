@@ -1,19 +1,12 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
+
 import './globals.css';
 import { Loading } from '@/components/shared';
-import { Suspense } from 'react';
 import { DefaultProvider } from '@/components/layout';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Tiny Mart',
@@ -29,7 +22,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.className} antialiased`}
       >
         <Suspense fallback={<Loading />}>
           <DefaultProvider>{children}</DefaultProvider>
