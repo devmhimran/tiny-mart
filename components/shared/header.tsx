@@ -16,9 +16,15 @@ export function Header() {
 
       <div className='hidden md:block'>
         <div className='flex items-center justify-center gap-10 text-sm font-medium'>
-          <Link href='/'>Home</Link>
-          <Link href='/products'>Our Products</Link>
-          <Link href='/blogs'>Blogs</Link>
+          <Link href='/' className='hover:text-[#FF4C01]'>
+            Home
+          </Link>
+          <Link href='/products' className='hover:text-[#FF4C01]'>
+            Our Products
+          </Link>
+          <Link href='/blogs' className='hover:text-[#FF4C01]'>
+            Blogs
+          </Link>
         </div>
       </div>
       <div className='flex items-center gap-3'>
