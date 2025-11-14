@@ -12,9 +12,8 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className='max-w-screen-2xl flex justify-between items-center mx-auto px-6 py-2'>
-      <Link href='/'>
-        <PrimaryLogo />
-      </Link>
+      <PrimaryLogo />
+
       <div className='hidden md:block'>
         <div className='flex items-center justify-center gap-10 text-sm font-medium'>
           <Link href='/'>Home</Link>
