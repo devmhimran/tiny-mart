@@ -50,11 +50,11 @@ export function ProductCard({ data }: ProductCardProps) {
                 ৳{discountedPrice.toFixed(2)}
               </span>
               <span className='text-sm text-slate-400 line-through'>
-                ${price.toFixed(2)}
+                ৳{price.toFixed(2)}
               </span>
             </>
           ) : (
-            <span className='text-lg font-bold'>${price.toFixed(2)}</span>
+            <span className='text-lg font-bold'>৳{price.toFixed(2)}</span>
           )}
         </div>
       </CardContent>
