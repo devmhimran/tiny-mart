@@ -6,8 +6,9 @@ import { useDebouncedCallback } from 'use-debounce';
 
 import { useProduct } from '@/hooks/product/use-product';
 import { generateQueryString } from '@/lib/utils';
-import { ProductGrid, ProductSearch } from '@/components/products';
+import { ProductGrid } from '@/components/products';
 import { PaginationMain } from '@/components/shared';
+import { SearchField } from '@/components/shared/search-field';
 
 export default function ProductsPage() {
   const searchParams = useSearchParams();
@@ -38,8 +39,8 @@ export default function ProductsPage() {
 
   return (
     <div className='max-w-screen-2xl flex flex-col gap-4 md:gap-6 mx-auto py-8 px-2'>
-      <h2 className='text-3xl font-semibold'>Our Products</h2>
-      <ProductSearch search={debounced} params={params} setParams={setParams} />
+      <h2 className='text-2xl md:text-3xl font-semibold'>Our Products</h2>
+      <SearchField search={debounced} params={params} setParams={setParams} />
       <ProductGrid
         data={getAllProducts || []}
         loading={getAllProductsMutation.isLoading}

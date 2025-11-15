@@ -9,8 +9,8 @@ export function HomeProduct() {
   );
 
   return (
-    <div className='max-w-screen-2xl flex flex-col gap-4 md:gap-6 mx-auto py-8 px-2'>
-      <h2 className='text-2xl md:text-4xl font-bold text-center'>
+    <div className='max-w-screen-2xl flex flex-col gap-8 md:gap-12 mx-auto py-8 px-2'>
+      <h2 className='text-3xl md:text-4xl font-bold text-center'>
         Our Products
       </h2>
       <ProductGrid

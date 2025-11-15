@@ -6,17 +6,21 @@ import { Search, X } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
-export function ProductSearch({
-  search,
-  params,
-  setParams,
-}: {
+type SearchFieldProps = {
   search: (value: string) => void;
   params: { search: string; page: string };
   setParams: React.Dispatch<
     React.SetStateAction<{ search: string; page: string }>
   >;
-}) {
+  placeholder?: string;
+};
+
+export function SearchField({
+  search,
+  params,
+  setParams,
+  placeholder = 'Search by title',
+}: SearchFieldProps) {
   const [searchQuery, setSearchQuery] = useState(params.search);
   return (
     <Card className='w-full shadow-none'>
@@ -31,7 +35,7 @@ export function ProductSearch({
             <div className='relative'>
               <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400' />
               <Input
-                placeholder='Search products by title'
+                placeholder={placeholder}
                 value={searchQuery}
                 onChange={(e) => {
                   search(e.target.value);

@@ -2,8 +2,8 @@ import { CreateBlogType } from '@/types';
 import { instance } from '../axios';
 
 const blogsApi = {
-  getAllBlogs: () => {
-    const url = '/blog/all';
+  getAllBlogs: (params?: string) => {
+    const url = '/blogs' + params;
     return instance.get(url);
   },
   getBlogById: (id: string) => {

@@ -4,6 +4,8 @@ export type BlogType = {
   description: string;
   writerName: string;
   status: number;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export type CreateBlogType = {
