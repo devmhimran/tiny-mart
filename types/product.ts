@@ -1,9 +1,8 @@
 export interface ProductAttributeType {
-  id: number;
+  sku: string;
   size: string;
   price: number;
   stock: number;
-  sku: string;
   status: number;
 }
 
@@ -16,4 +15,7 @@ export interface ProductType {
   isFeatured: string;
   status: number;
   attributes: ProductAttributeType[];
+  rating: number;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -1,8 +1,8 @@
 import { instance } from '../axios';
 
 const productsApi = {
-  getAllProducts: () => {
-    const url = '/products/all';
+  getAllProducts: (params?: string) => {
+    const url = '/products' + params;
     return instance.get(url);
   },
   getProductByLimit: (limit: number) => {

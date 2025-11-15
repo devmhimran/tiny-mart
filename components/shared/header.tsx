@@ -11,7 +11,7 @@ import PrimaryLogo from './primary-logo';
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className='max-w-screen-2xl flex justify-between items-center mx-auto py-2'>
+    <div className='max-w-screen-2xl flex justify-between items-center mx-auto py-2 px-2 md:px-0'>
       <PrimaryLogo />
 
       <div className='hidden md:block'>
