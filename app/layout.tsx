@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         suppressHydrationWarning
-        className={`${inter.className} antialiased`}
+        className={`${inter.className} antialiased bg-gray-50`}
       >
         <Suspense fallback={<Loading />}>
           <DefaultProvider>{children}</DefaultProvider>

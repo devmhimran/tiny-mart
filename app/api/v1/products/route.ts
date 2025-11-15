@@ -8,8 +8,6 @@ export async function GET(request: Request) {
   const page = searchParams.get('page') || '1';
   const limit = searchParams.get('limit') || '100';
 
-  console.log({ search, page, limit, searchParams });
-
   const whereConditions: Prisma.ProductWhereInput[] = [];
 
   if (search) {
@@ -29,6 +27,7 @@ export async function GET(request: Request) {
       where,
       skip: (Number(page) - 1) * Number(limit),
       take: Number(limit),
+      orderBy: { createdAt: 'desc' },
     });
 
     return NextResponse.json(

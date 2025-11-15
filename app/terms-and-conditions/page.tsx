@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function TermsAndConditions() {
   return (
-    <div className='max-w-screen-2xl mx-auto py-8'>
+    <div className='max-w-screen-2xl mx-auto py-8 px-2'>
       <div className='mb-8'>
         <h1 className='text-3xl md:text-4xl font-bold'>
           Terms &amp; Conditions

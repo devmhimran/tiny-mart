@@ -21,7 +21,7 @@ export default function PrimaryLogo({
         width={width}
         height={height}
         alt='Logo Main'
-        className={cn('w-14', className)}
+        className={cn('w-14 inline', className)}
       />
     </Link>
   );

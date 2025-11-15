@@ -20,8 +20,10 @@ export default function PhoneMenu({ isOpen, setIsOpen }: PhoneMenuProps) {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetContent side='top' className='py-3'>
         <SheetHeader>
-          <SheetTitle onClick={() => setIsOpen(false)}>
-            <PrimaryLogo />
+          <SheetTitle>
+            <span onClick={() => setIsOpen(false)}>
+              <PrimaryLogo />
+            </span>
           </SheetTitle>
         </SheetHeader>
 
