@@ -12,18 +12,36 @@ This is a small project to showcase basic API integration with simple CRUD opera
 
 ### Installation
 
-1. Install dependencies:
+1. Unzip or Clone:
+
+#### Download Zip
+
+```bash
+https://github.com//devmhimran/tiny-mart/archive/refs/heads/development.zip
+```
+
+```bash
+git clone https://github.com/devmhimran/tiny-mart.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd tiny-mart
+```
+
+3. Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Set up environment variables:
+4. Set up environment variables:
 
    - Create a `.env` file in the root directory
    - Copy and paste the content from `.env.example` (provided in the project)
 
-3. Generate Prisma client:
+5. Generate Prisma client:
 
 ```bash
 npx prisma generate
