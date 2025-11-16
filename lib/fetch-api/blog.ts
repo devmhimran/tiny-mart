@@ -7,7 +7,7 @@ const blogsApi = {
     return instance.get(url);
   },
   getBlogById: (id: string) => {
-    const url = `/blog/${id}`;
+    const url = `/blogs/${id}`;
     return instance.get(url);
   },
   addBlog: (data: CreateBlogType) => {

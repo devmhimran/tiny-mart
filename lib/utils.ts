@@ -24,3 +24,14 @@ export function generateQueryString(params: Record<string, string>) {
 
   return `?${queryString}`;
 }
+
+export function formatDate(dateString?: string): string {
+  const formattedDate = dateString
+    ? new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+    : '';
+  return formattedDate;
+}

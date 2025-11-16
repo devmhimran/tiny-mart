@@ -17,3 +17,17 @@ export function useBlog(options?: string) {
     getAllBlogs: getAllBlogsMutation.data?.data || [],
   };
 }
+
+export function useBlogById(id: string) {
+  const getBlogByIdMutation = useQuery<{ data: BlogType }>({
+    queryKey: ['blogs', id],
+    queryFn: async () => {
+      const res = await blogsApi.getBlogById(id).then(({ data }) => data);
+      return res;
+    },
+  });
+  return {
+    getBlogByIdMutation,
+    getBlogById: getBlogByIdMutation.data?.data || null,
+  };
+}

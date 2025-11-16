@@ -1,7 +1,9 @@
+import { Calendar, User } from 'lucide-react';
+
 import { BlogType } from '@/types';
 import { Card, CardContent, CardHeader } from '../ui/card';
-import { Calendar, User } from 'lucide-react';
 import Link from 'next/link';
+import { formatDate } from '@/lib/utils';
 
 type BlogCardProps = {
   data: BlogType;
@@ -9,15 +11,6 @@ type BlogCardProps = {
 };
 
 export default function BlogCard({ data }: BlogCardProps) {
-  // Format date
-  const formattedDate = data.createdAt
-    ? new Date(data.createdAt).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })
-    : '';
-
   const stripHtml = (html: string) => {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
@@ -51,10 +44,10 @@ export default function BlogCard({ data }: BlogCardProps) {
               <User className='w-4 h-4' />
               <span>{data.writerName}</span>
             </div>
-            {formattedDate && (
+            {formatDate(data.createdAt) && (
               <div className='flex items-center gap-1.5'>
                 <Calendar className='w-4 h-4' />
-                <span>{formattedDate}</span>
+                <span>{formatDate(data.createdAt)}</span>
               </div>
             )}
           </div>
