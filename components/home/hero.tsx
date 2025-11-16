@@ -33,7 +33,7 @@ export function Hero() {
             <Link href='/products' className='w-full sm:w-auto'>
               <Button
                 size='lg'
-                className='w-full sm:w-auto bg-[#FF4C01] hover:bg-[#ec4700] text-white hover:brightness-95 cursor-pointer'
+                className='w-full sm:w-auto bg-[#FF4C01] hover:bg-[#ec4700] text-white hover:brightness-95'
               >
                 Shop Products
               </Button>

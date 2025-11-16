@@ -18,8 +18,8 @@ import {
   FormMessage,
 } from '../ui/form';
 import { Input } from '../ui/input';
-import blogsApi from '@/lib/fetch-api/blog';
 import { Textarea } from '../ui/textarea';
+import { useBlog } from '@/hooks/blog/use-blog';
 
 const formSchema = z.object({
   blogTitle: z.string().min(2, {
@@ -36,6 +36,7 @@ const formSchema = z.object({
 export function CreateBlogForm() {
   const [pending, setPending] = useState(false);
   const router = useRouter();
+  const { createBlogMutateAsync } = useBlog();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,7 +48,7 @@ export function CreateBlogForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const response = blogsApi.createBlog(values);
+    const response = createBlogMutateAsync(values);
 
     setPending(true);
     toast.promise(response, {
@@ -119,7 +120,7 @@ export function CreateBlogForm() {
         <Button
           type='submit'
           disabled={pending}
-          className='bg-[#FF4C01] hover:bg-[#e04300] text-white cursor-pointer flex justify-start'
+          className='bg-[#FF4C01] hover:bg-[#e04300] text-white flex justify-start'
         >
           {pending && <Loader2Icon className='animate-spin' />}
           Create

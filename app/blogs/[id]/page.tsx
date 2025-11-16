@@ -24,7 +24,7 @@ export default function BlogDetailPage() {
       <Button
         variant='outline'
         onClick={() => router.push('/blogs')}
-        className='w-fit cursor-pointer'
+        className='w-fit'
       >
         <ArrowLeft className='w-4 h-4 mr-2' />
         Back to Blogs
@@ -37,7 +37,7 @@ export default function BlogDetailPage() {
               <h1 className='text-2xl md:text-3xl font-bold text-gray-900 mb-4'>
                 {blogTitle}
               </h1>
-              <BlogActions />
+              <BlogActions id={id as string} />
             </div>
 
             <div className='flex items-center gap-6 text-sm text-gray-600'>

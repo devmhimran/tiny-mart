@@ -24,12 +24,23 @@ export function useBlog(options?: string) {
     },
   });
 
+  const deleteBlogMutation = useMutation({
+    mutationFn: async (id: string) =>
+      await blogsApi.deleteBlog(id).then(({ data }) => data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['blogs'] });
+    },
+  });
+
   return {
     getAllBlogsMutation,
     getAllBlogs: getAllBlogsMutation.data?.data || [],
     createBlogMutation,
     createBlogMutateAsync: createBlogMutation.mutateAsync,
     createBlogAsync: createBlogMutation.mutate,
+    deleteBlogMutation,
+    deleteBlogMutateAsync: deleteBlogMutation.mutateAsync,
+    deleteBlogAsync: deleteBlogMutation.mutate,
   };
 }
 

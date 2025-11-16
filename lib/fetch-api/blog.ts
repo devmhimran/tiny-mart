@@ -14,7 +14,7 @@ const blogsApi = {
     const url = '/blogs';
     return instance.post(url, data);
   },
-  deleteBlog: (id: number) => {
+  deleteBlog: (id: string) => {
     const url = `/blogs/${id}`;
     return instance.delete(url);
   },

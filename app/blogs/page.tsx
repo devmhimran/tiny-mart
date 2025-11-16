@@ -45,7 +45,7 @@ export default function BlogsPage() {
       <div className='flex justify-between'>
         <h2 className='text-2xl md:text-3xl font-semibold'>Blogs & News</h2>
         <Link href='/blogs/create-blog'>
-          <Button className='bg-[#FF4C01] hover:bg-[#e04300] text-white cursor-pointer'>
+          <Button className='bg-[#FF4C01] hover:bg-[#e04300] text-white'>
             <Plus /> Create New Blog
           </Button>
         </Link>
