@@ -10,7 +10,7 @@ import { BlogsGrid } from '@/components/blogs';
 import { PaginationMain } from '@/components/shared';
 import { SearchField } from '@/components/shared/search-field';
 import { Button } from '@/components/ui/button';
-import { useBlog } from '@/hooks/blog/use-blog';
+import { useGetAllBlogs } from '@/hooks/blog/use-blog';
 import { generateQueryString } from '@/lib/utils';
 
 export default function BlogsPage() {
@@ -32,7 +32,7 @@ export default function BlogsPage() {
 
   const queryString = generateQueryString(params);
 
-  const { getAllBlogsMutation, getAllBlogs } = useBlog(
+  const { getAllBlogsMutation, getAllBlogs } = useGetAllBlogs(
     queryString + '&limit=15'
   );
 

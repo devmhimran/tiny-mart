@@ -6,16 +6,7 @@ import { BlogType, CreateBlogType, Meta, Response } from '@/types';
 
 const queryClient = getQueryClient();
 
-export function useBlog(options?: string) {
-  const getAllBlogsMutation = useQuery<Response<BlogType[], Meta>>({
-    queryKey: ['blogs', options],
-    queryFn: async () => {
-      const res = await blogsApi.getAllBlogs(options).then(({ data }) => data);
-      return res;
-    },
-    placeholderData: keepPreviousData,
-  });
-
+export function useBlog() {
   const createBlogMutation = useMutation({
     mutationFn: async (data: CreateBlogType) =>
       await blogsApi.createBlog(data).then(({ data }) => data),
@@ -41,8 +32,6 @@ export function useBlog(options?: string) {
   });
 
   return {
-    getAllBlogsMutation,
-    getAllBlogs: getAllBlogsMutation.data?.data || [],
     createBlogMutation,
     createBlogMutateAsync: createBlogMutation.mutateAsync,
     createBlogAsync: createBlogMutation.mutate,
@@ -54,6 +43,21 @@ export function useBlog(options?: string) {
     deleteBlogAsync: deleteBlogMutation.mutate,
   };
 }
+
+export const useGetAllBlogs = (options?: string) => {
+  const getAllBlogsMutation = useQuery<Response<BlogType[], Meta>>({
+    queryKey: ['blogs', options],
+    queryFn: async () => {
+      const res = await blogsApi.getAllBlogs(options).then(({ data }) => data);
+      return res;
+    },
+    placeholderData: keepPreviousData,
+  });
+  return {
+    getAllBlogsMutation,
+    getAllBlogs: getAllBlogsMutation.data?.data || [],
+  };
+};
 
 export function useBlogById(id: string) {
   const getBlogByIdMutation = useQuery<{ data: BlogType }>({
