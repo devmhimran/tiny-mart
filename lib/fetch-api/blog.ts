@@ -10,12 +10,12 @@ const blogsApi = {
     const url = `/blogs/${id}`;
     return instance.get(url);
   },
-  addBlog: (data: CreateBlogType) => {
-    const url = '/blog/add';
+  createBlog: (data: CreateBlogType) => {
+    const url = '/blogs';
     return instance.post(url, data);
   },
   deleteBlog: (id: number) => {
-    const url = `/blog/delete/${id}`;
+    const url = `/blogs/${id}`;
     return instance.delete(url);
   },
 };

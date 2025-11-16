@@ -1,13 +1,17 @@
 'use client';
 
+import { Plus } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import { BlogsGrid } from '@/components/blogs/blogs-grid';
 import { PaginationMain } from '@/components/shared';
 import { SearchField } from '@/components/shared/search-field';
+import { Button } from '@/components/ui/button';
 import { useBlog } from '@/hooks/blog/use-blog';
 import { generateQueryString } from '@/lib/utils';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
 
 export default function BlogsPage() {
   const searchParams = useSearchParams();
@@ -38,9 +42,16 @@ export default function BlogsPage() {
 
   return (
     <div className='max-w-screen-2xl flex flex-col gap-4 md:gap-6 mx-auto py-8 px-2'>
-      <h2 className='text-2xl md:text-3xl font-semibold'>Blogs & News</h2>
-      <SearchField search={debounced} params={params} setParams={setParams} />
+      <div className='flex justify-between'>
+        <h2 className='text-2xl md:text-3xl font-semibold'>Blogs & News</h2>
+        <Link href='/blogs/create-blog'>
+          <Button className='bg-[#FF4C01] hover:bg-[#e04300] text-white cursor-pointer'>
+            <Plus /> Create New Blog
+          </Button>
+        </Link>
+      </div>
 
+      <SearchField search={debounced} params={params} setParams={setParams} />
       <BlogsGrid data={getAllBlogs} loading={getAllBlogsMutation.isLoading} />
 
       <PaginationMain

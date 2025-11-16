@@ -45,3 +45,27 @@ export async function GET(request: Request) {
     );
   }
 }
+
+export async function POST(request: Request) {
+  const body = await request.json();
+
+  try {
+    await prisma.blog.create({
+      data: {
+        blogTitle: body.blogTitle,
+        description: body.description,
+        writerName: body.writerName,
+      },
+    });
+    return NextResponse.json(
+      { message: 'Blog created successfully' },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error('Error creating blog:', error);
+    return NextResponse.json(
+      { error: 'Failed to create blog' },
+      { status: 500 }
+    );
+  }
+}

@@ -1,6 +1,10 @@
+import { keepPreviousData, useMutation, useQuery } from '@tanstack/react-query';
+
 import blogsApi from '@/lib/fetch-api/blog';
-import { BlogType, Meta, Response } from '@/types';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { getQueryClient } from '@/lib/react-query';
+import { BlogType, CreateBlogType, Meta, Response } from '@/types';
+
+const queryClient = getQueryClient();
 
 export function useBlog(options?: string) {
   const getAllBlogsMutation = useQuery<Response<BlogType[], Meta>>({
@@ -12,9 +16,20 @@ export function useBlog(options?: string) {
     placeholderData: keepPreviousData,
   });
 
+  const createBlogMutation = useMutation({
+    mutationFn: async (data: CreateBlogType) =>
+      await blogsApi.createBlog(data).then(({ data }) => data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['blogs'] });
+    },
+  });
+
   return {
     getAllBlogsMutation,
     getAllBlogs: getAllBlogsMutation.data?.data || [],
+    createBlogMutation,
+    createBlogMutateAsync: createBlogMutation.mutateAsync,
+    createBlogAsync: createBlogMutation.mutate,
   };
 }
 
