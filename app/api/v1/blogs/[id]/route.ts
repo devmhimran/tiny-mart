@@ -42,3 +42,32 @@ export async function DELETE(
     );
   }
 }
+
+export async function PUT(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  const { blogTitle, description, writerName } = await request.json();
+
+  try {
+    const updatedBlog = await prisma.blog.update({
+      where: { id: Number(id) },
+      data: {
+        blogTitle,
+        description,
+        writerName,
+      },
+    });
+    return NextResponse.json(
+      { data: updatedBlog, message: 'Blog updated successfully' },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Error updating blog:', error);
+    return NextResponse.json(
+      { error: 'Failed to update blog' },
+      { status: 500 }
+    );
+  }
+}

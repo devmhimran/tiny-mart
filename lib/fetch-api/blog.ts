@@ -18,6 +18,10 @@ const blogsApi = {
     const url = `/blogs/${id}`;
     return instance.delete(url);
   },
+  updateBlog: (id: string, data: CreateBlogType) => {
+    const url = `/blogs/${id}`;
+    return instance.put(url, data);
+  },
 };
 
 export default blogsApi;

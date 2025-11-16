@@ -58,7 +58,9 @@ export function BlogActions({ id }: BlogActionsProps) {
         <DropdownMenuContent>
           <DropdownMenuLabel>Options</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Edit</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push(`/blogs/${id}/edit`)}>
+            Edit
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setConfirmModal(true)}>
             Delete
           </DropdownMenuItem>

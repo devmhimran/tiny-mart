@@ -24,6 +24,14 @@ export function useBlog(options?: string) {
     },
   });
 
+  const updateBlogMutation = useMutation({
+    mutationFn: async (data: { id: string; data: CreateBlogType }) =>
+      await blogsApi.updateBlog(data.id, data.data).then(({ data }) => data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['blogs'] });
+    },
+  });
+
   const deleteBlogMutation = useMutation({
     mutationFn: async (id: string) =>
       await blogsApi.deleteBlog(id).then(({ data }) => data),
@@ -38,6 +46,9 @@ export function useBlog(options?: string) {
     createBlogMutation,
     createBlogMutateAsync: createBlogMutation.mutateAsync,
     createBlogAsync: createBlogMutation.mutate,
+    updateBlogMutation,
+    updateBlogMutateAsync: updateBlogMutation.mutateAsync,
+    updateBlogAsync: updateBlogMutation.mutate,
     deleteBlogMutation,
     deleteBlogMutateAsync: deleteBlogMutation.mutateAsync,
     deleteBlogAsync: deleteBlogMutation.mutate,
