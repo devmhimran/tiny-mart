@@ -1,7 +1,7 @@
 'use client';
 
 import { useBlog } from '@/hooks/blog/use-blog';
-import { BlogsGrid } from '../blogs/blogs-grid';
+import { BlogsGrid } from '../blogs';
 
 export default function HomeBlog() {
   const { getAllBlogsMutation, getAllBlogs } = useBlog('?page=1' + '&limit=5');

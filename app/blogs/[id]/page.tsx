@@ -1,13 +1,14 @@
 'use client';
 
 import { Calendar, User, ArrowLeft } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
 
 import { formatDate } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useBlogById } from '@/hooks/blog/use-blog';
-import { useParams, useRouter } from 'next/navigation';
 import { BlogDetailsSkeleton } from '@/components/skeletons';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { BlogActions } from '@/components/blogs';
 
 export default function BlogDetailPage() {
   const { id } = useParams();
@@ -31,10 +32,13 @@ export default function BlogDetailPage() {
 
       {!isLoading ? (
         <Card className='overflow-hidden'>
-          <CardHeader className='p-6 md:p-8 pb-4 border-b'>
-            <h1 className='text-3xl md:text-4xl font-bold text-gray-900 mb-4'>
-              {blogTitle}
-            </h1>
+          <CardHeader className=' border-b'>
+            <div className='flex justify-between gap-4'>
+              <h1 className='text-2xl md:text-3xl font-bold text-gray-900 mb-4'>
+                {blogTitle}
+              </h1>
+              <BlogActions />
+            </div>
 
             <div className='flex items-center gap-6 text-sm text-gray-600'>
               <div className='flex items-center gap-2'>
@@ -50,7 +54,7 @@ export default function BlogDetailPage() {
             </div>
           </CardHeader>
 
-          <CardContent className='p-6 md:p-8'>
+          <CardContent className='px-6 md:px-8'>
             <div
               className='prose prose-lg max-w-none text-gray-700 leading-relaxed'
               dangerouslySetInnerHTML={{ __html: description ?? '' }}

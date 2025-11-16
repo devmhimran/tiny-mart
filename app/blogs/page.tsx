@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { BlogsGrid } from '@/components/blogs/blogs-grid';
+import { BlogsGrid } from '@/components/blogs';
 import { PaginationMain } from '@/components/shared';
 import { SearchField } from '@/components/shared/search-field';
 import { Button } from '@/components/ui/button';

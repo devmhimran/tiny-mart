@@ -1,6 +1,6 @@
 import { BlogType } from '@/types';
-import BlogCard from './blog-card';
 import { BlogsGridSkeleton } from '../skeletons';
+import { BlogCard } from './blog-card';
 
 type BlogsGridProps = {
   data: BlogType[];

@@ -10,7 +10,7 @@ type BlogCardProps = {
   loading?: boolean;
 };
 
-export default function BlogCard({ data }: BlogCardProps) {
+export function BlogCard({ data }: BlogCardProps) {
   const stripHtml = (html: string) => {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
