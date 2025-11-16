@@ -32,9 +32,13 @@ export default function BlogsPage() {
   }, 500);
 
   const queryString = generateQueryString(params);
+  const cleanQueryStringForApi = queryString.replace(
+    /(&)?highlight=[^&]*/g,
+    ''
+  );
 
   const { getAllBlogsMutation, getAllBlogs } = useGetAllBlogs(
-    queryString + '&limit=15'
+    cleanQueryStringForApi + '&limit=15'
   );
 
   useEffect(() => {
@@ -46,10 +50,14 @@ export default function BlogsPage() {
     if (!highlightId) return;
 
     const timer = setTimeout(() => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.delete('highlight');
+      const updated = new URLSearchParams(searchParams.toString());
+      updated.delete('highlight');
+      router.replace(`?${updated.toString()}`);
 
-      router.replace(`?${params.toString()}`);
+      setParams((prev) => ({
+        ...prev,
+        highlight: '',
+      }));
     }, 3000);
 
     return () => clearTimeout(timer);
