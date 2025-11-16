@@ -20,6 +20,8 @@ This is a small project to showcase basic API integration with simple CRUD opera
 https://github.com//devmhimran/tiny-mart/archive/refs/heads/development.zip
 ```
 
+#### Clone the repository
+
 ```bash
 git clone https://github.com/devmhimran/tiny-mart.git
 ```
