@@ -1,5 +1,7 @@
 # Tiny Mart
 
+[![MasterHead](https://raw.githubusercontent.com/devmhimran/tiny-mart/refs/heads/development/public/assets/png/tiny-mart-cover.png)](https://tiny-mart-pro.vercel.app/)
+
 This is a small project to showcase basic API integration with simple CRUD operations.
 
 **Live Demo:** [https://tiny-mart-pro.vercel.app/](https://tiny-mart-pro.vercel.app/)
@@ -15,13 +17,10 @@ This is a small project to showcase basic API integration with simple CRUD opera
 1. Unzip or Clone:
 
 #### Download Zip
-
 ```bash
 https://github.com//devmhimran/tiny-mart/archive/refs/heads/development.zip
 ```
-
 #### Clone the repository
-
 ```bash
 git clone https://github.com/devmhimran/tiny-mart.git
 ```
