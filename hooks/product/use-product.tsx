@@ -21,3 +21,17 @@ export function useProduct(options?: string) {
     getAllProducts: getAllProductsMutation.data?.data || [],
   };
 }
+
+export function useProductId(id: string) {
+  const getProductByIdMutation = useQuery<{ data: ProductType }>({
+    queryKey: ['products', id],
+    queryFn: async () => {
+      const res = await productsApi.getProductById(id).then(({ data }) => data);
+      return res;
+    },
+  });
+  return {
+    getProductByIdMutation,
+    getProductById: getProductByIdMutation.data?.data || null,
+  };
+}

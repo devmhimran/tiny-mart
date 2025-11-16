@@ -9,9 +9,9 @@ type ProductCardProps = {
 };
 
 export function ProductCard({ data }: ProductCardProps) {
-  const firstAttribute = data.attributes?.[0];
-  const price = firstAttribute?.price ?? 0;
-  const discountedPrice = price - (price * data.productDiscount) / 100;
+  const lowestPrice = Math.min(...data.attributes.map((a) => a.price));
+  const discountedPrice =
+    lowestPrice - (lowestPrice * data.productDiscount) / 100;
 
   return (
     <Link href={`/products/${data.id}`}>
@@ -54,11 +54,13 @@ export function ProductCard({ data }: ProductCardProps) {
                   ৳{discountedPrice.toFixed(2)}
                 </span>
                 <span className='text-sm text-slate-400 line-through'>
-                  ৳{price.toFixed(2)}
+                  ৳{lowestPrice.toFixed(2)}
                 </span>
               </>
             ) : (
-              <span className='text-lg font-bold'>৳{price.toFixed(2)}</span>
+              <span className='text-lg font-bold'>
+                ৳{lowestPrice.toFixed(2)}
+              </span>
             )}
           </div>
         </CardContent>

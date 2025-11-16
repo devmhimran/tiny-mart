@@ -11,7 +11,6 @@ export async function GET(
     const product = await prisma.product.findUnique({
       where: { id: Number(id) },
     });
-
     return NextResponse.json({ data: product }, { status: 200 });
   } catch (error) {
     console.error('Error fetching product:', error);
