@@ -1,9 +1,10 @@
 import { Calendar, User } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 import { BlogType } from '@/types';
 import { Card, CardContent, CardHeader } from '../ui/card';
 import Link from 'next/link';
-import { formatDate } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 
 type BlogCardProps = {
   data: BlogType;
@@ -11,6 +12,9 @@ type BlogCardProps = {
 };
 
 export function BlogCard({ data }: BlogCardProps) {
+  const searchParams = useSearchParams();
+  const highlightId = searchParams.get('highlight');
+
   const stripHtml = (html: string) => {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
@@ -25,7 +29,14 @@ export function BlogCard({ data }: BlogCardProps) {
 
   return (
     <Link href={`/blogs/${data.id}`}>
-      <Card className='overflow-hidden shadow-none hover:shadow-md transition-shadow duration-300 h-full flex flex-col gap-2 md:gap-4 py-4 md:py-6'>
+      <Card
+        className={cn(
+          'overflow-hidden shadow-none hover:shadow-md transition-all duration-700 ease-in-out h-full flex flex-col gap-2 md:gap-4 py-4 md:py-6',
+          highlightId && +highlightId === data.id
+            ? 'border-2 border-[#FF4C01] bg-blue-50 scale-110'
+            : ''
+        )}
+      >
         <CardHeader className='px-3 md:px-4'>
           <h3 className='text-lg md:text-xl font-bold text-gray-900 line-clamp-2'>
             {data.blogTitle}

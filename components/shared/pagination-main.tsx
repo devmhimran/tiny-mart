@@ -9,17 +9,19 @@ import {
   PaginationPrevious,
 } from '../ui/pagination';
 
-type PaginationMainProps = {
-  params: { search: string; page: string };
-  setParams: (params: { search: string; page: string }) => void;
+type ParamsWithSearch<T extends { search: string }> = T;
+
+type PaginationMainProps<T extends { search: string }> = {
+  params: ParamsWithSearch<T>;
+  setParams: React.Dispatch<React.SetStateAction<ParamsWithSearch<T>>>;
   meta?: Meta;
 };
 
-export function PaginationMain({
+export function PaginationMain<T extends { search: string }>({
   meta,
   params,
   setParams,
-}: PaginationMainProps) {
+}: PaginationMainProps<T>) {
   if (!meta || meta.totalPages <= 1) return null;
 
   const currentPage = meta.page;

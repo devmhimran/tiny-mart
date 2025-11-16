@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   try {
-    await prisma.blog.create({
+    const result = await prisma.blog.create({
       data: {
         blogTitle: body.blogTitle,
         description: body.description,
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
       },
     });
     return NextResponse.json(
-      { message: 'Blog created successfully' },
+      { message: 'Blog created successfully', data: { id: result.id } },
       { status: 201 }
     );
   } catch (error) {

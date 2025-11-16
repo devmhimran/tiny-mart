@@ -56,7 +56,7 @@ export function CreateBlogForm() {
       success: (response) => {
         form.reset();
         setPending(false);
-        router.push('/blogs');
+        router.push(`/blogs?page=1&highlight=${response.data?.id}`);
         return response.data?.message || 'Successfully created Blog';
       },
 

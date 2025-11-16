@@ -20,6 +20,7 @@ export default function BlogsPage() {
   const [params, setParams] = useState({
     search: searchParams.get('search') || '',
     page: searchParams.get('page') || '1',
+    highlight: searchParams.get('highlight') || '',
   });
 
   const debounced = useDebouncedCallback((value) => {
@@ -39,6 +40,20 @@ export default function BlogsPage() {
   useEffect(() => {
     router.push(queryString);
   }, [queryString, router]);
+
+  useEffect(() => {
+    const highlightId = searchParams.get('highlight');
+    if (!highlightId) return;
+
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete('highlight');
+
+      router.replace(`?${params.toString()}`);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [searchParams, router]);
 
   return (
     <div className='max-w-screen-2xl flex flex-col gap-4 md:gap-6 mx-auto py-8 px-2'>
